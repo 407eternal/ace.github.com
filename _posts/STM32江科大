@@ -1,0 +1,7 @@
+##新建工程
+建立存放工程的文件夹  位置随便名字STM32Project
+打开Keil5软件
+选择project-New vision project 选择刚才新建的文件夹 再新建一个文件夹 名字2-1 STM32工程模板 点进去起个工程名称project 
+点击保存  选择STM32F103C8T6
+打开STM32固件包STM32F10x_StdPeriph_Lib_V3.5.0-Libraries-CMSIS-CM3-DeviceSupport-ST-STM32F10x-startup-arm
+全选文件复制
