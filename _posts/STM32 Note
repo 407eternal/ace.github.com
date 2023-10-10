@@ -1,1 +1,35 @@
+##stm32f10x_rcc.h
+基本常用的三个函数
+RCC AHB外设时钟控制
+RCC APB1 APB2外设时钟控制
+作用:使能和失能外设时钟
+第一个参数选择外设，第二个参数使能或失能
 
+##gpio.h
+void GPIO_DeInit(GPIO_TypeDef* GPIOx); 复位GPIO外设
+void GPIO_AFIODeInit(void);复位AFIO外设
+！void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct);  用结构体来初始化GPIO口，先定义一个结构体变量，然后再给结构体赋值，
+最后调用这个函数
+void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct);  可以给结构体变量赋一个默认值
+
+uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx);
+uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx);
+4个GPIO读取函数
+
+void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);    这个函数可以把指定的端口设置为高电平
+void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);  这个可以把指定的端口设置为低电平
+void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal);   第三个参数根据第三个参数设置的值指定端口
+void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal);  PortVal 可以同时对16个端口进行写入操作 
+4个GPIO写入函数
+
+八种输入模式
+AIN 模拟输入
+IN_FLOATING 浮空输入
+IPD in pull down 下拉输入
+IPU in put up   上拉输入
+OUT_OD out open Drain 开漏输入    开漏输出高电平相当于高阻态，没有驱动能力 低电平有驱动能力
+OUT_PP out push pull 推挽输入    推挽输出高低电平均有驱动能力
+AF_OD Atl open Drain 复用开漏
+AF_PP Atl push pull  复用推挽 
