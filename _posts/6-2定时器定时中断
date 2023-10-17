@@ -1,0 +1,63 @@
+TIM的常用库函数
+
+void TIM_DeInit(TIM_TypeDef* TIMx); 回复缺省配置
+void TIM_TimeBaseInit(TIM_TypeDef* TIMx, TIM_TimeBaseInitTypeDef* TIM_TimeBaseInitStruct);          //时基单元
+时基单元初始化（TIMx选择某个定时器，TIM_TimeBaseInitStruct是结构体，内容是包含了配置时基单元的参数）
+
+void TIM_TimeBaseStructInit(TIM_TimeBaseInitTypeDef* TIM_TimeBaseInitStruct);
+可以把结构体变量附一个默认值    
+
+void TIM_Cmd(TIM_TypeDef* TIMx, FunctionalState NewState);           //运行控制  启动定时器
+可以使能计数器（TIMx选择定时器，NewState选择使能或失能）
+
+void TIM_ITConfig(TIM_TypeDef* TIMx, uint16_t TIM_IT, FunctionalState NewState);       //中断输出控制
+使能中断输出信号（TIMx选择定时器，TIM_IT选择要配置哪个中断输出，NewState使能或失能）
+
+void TIM_InternalClockConfig(TIM_TypeDef* TIMx);                        //时钟源选择
+选择RCC内部时钟
+void TIM_ITRxExternalClockConfig(TIM_TypeDef* TIMx, uint16_t TIM_InputTriggerSource);        
+选择ITRx其他定时器（选择定时器，选择接入哪个其他的定时器）
+void TIM_TIxExternalClockConfig(TIM_TypeDef* TIMx, uint16_t TIM_TIxExternalCLKSource,uint16_t TIM_ICPolarity, uint16_t ICFilter);
+选择TIx捕获通道的时钟（选择定时器，选择具体的某个引脚，选择输入的极性，选择滤波器）
+void TIM_ETRClockMode1Config(TIM_TypeDef* TIMx, uint16_t TIM_ExtTRGPrescaler, uint16_t TIM_ExtTRGPolarity,
+                                                uint16_t TIM_ExtTRGPolarity, uint16_t ExtTRGFilter);
+选择ETR外部时钟通过外部时钟模式1（选择定时器，外部触发预分频器，选择输入的极性，选择滤波器）
+void TIM_ETRClockMode2Config(TIM_TypeDef* TIMx, uint16_t TIM_ExtTRGPrescaler, 
+                              uint16_t TIM_ExtTRGPolarity, uint16_t ExtTRGFilter);
+选择ETR外部时钟通过外部时钟模式2（选择定时器，外部触发预分频器，选择输入的极性，选择滤波器） 
+
+void TIM_ETRConfig(TIM_TypeDef* TIMx, uint16_t TIM_ExtTRGPrescaler, uint16_t TIM_ExtTRGPolarity,uint16_t ExtTRGFilter);
+配置18-23行的ETR引脚的预分频器，极性，滤波器的参数
+
+void TIM_PrescalerConfig(TIM_TypeDef* TIMx, uint16_t Prescaler, uint16_t TIM_PSCReloadMode);
+写预分频值的函数
+
+void TIM_CounterModeConfig(TIM_TypeDef* TIMx, uint16_t TIM_CounterMode);
+用来改变计数器的计数模式（选择定时器，选择新的计数器模式）
+
+void TIM_ARRPreloadConfig(TIM_TypeDef* TIMx, FunctionalState NewState);
+自动重装器预装功能配置（失能或使能选择预装不预装）
+
+void TIM_SetCounter(TIM_TypeDef* TIMx, uint16_t Counter);
+给计数器写入一个值（手动给值可用）
+
+void TIM_SetAutoreload(TIM_TypeDef* TIMx, uint16_t Autoreload);
+给自动重装器写入一个值
+
+uint16_t TIM_GetCounter(TIM_TypeDef* TIMx);
+获取当前计数器的值
+
+uint16_t TIM_GetPrescaler(TIM_TypeDef* TIMx);
+获取当前预分频器的值
+
+FlagStatus TIM_GetFlagStatus(TIM_TypeDef* TIMx, uint16_t TIM_FLAG);              //获取标志位和清除标志位
+void TIM_ClearFlag(TIM_TypeDef* TIMx, uint16_t TIM_FLAG);
+ITStatus TIM_GetITStatus(TIM_TypeDef* TIMx, uint16_t TIM_IT);
+void TIM_ClearITPendingBit(TIM_TypeDef* TIMx, uint16_t TIM_IT);
+
+
+
+
+滤波器原理
+检测电频信号，发生抖动保持上一次的电频信号
+频率越低，采样点数越多，滤波效果越好，但是信号延迟越大
