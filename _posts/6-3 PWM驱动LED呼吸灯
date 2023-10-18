@@ -1,0 +1,52 @@
+void TIM_OC1Init(TIM_TypeDef* TIMx, TIM_OCInitTypeDef* TIM_OCInitStruct);    配置输出比较，四个单元（选择定时器，使用相关结构体）
+void TIM_OC2Init(TIM_TypeDef* TIMx, TIM_OCInitTypeDef* TIM_OCInitStruct);
+void TIM_OC3Init(TIM_TypeDef* TIMx, TIM_OCInitTypeDef* TIM_OCInitStruct);
+void TIM_OC4Init(TIM_TypeDef* TIMx, TIM_OCInitTypeDef* TIM_OCInitStruct);
+
+
+void TIM_OCStructInit(TIM_OCInitTypeDef* TIM_OCInitStruct);    用来给输出比较结构体附一个默认值
+
+
+void TIM_ForcedOC1Config(TIM_TypeDef* TIMx, uint16_t TIM_ForcedAction);      用来配置强制输出模式的
+void TIM_ForcedOC2Config(TIM_TypeDef* TIMx, uint16_t TIM_ForcedAction);
+void TIM_ForcedOC3Config(TIM_TypeDef* TIMx, uint16_t TIM_ForcedAction);
+void TIM_ForcedOC4Config(TIM_TypeDef* TIMx, uint16_t TIM_ForcedAction);
+
+void TIM_OC1PreloadConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload);    用来配置CCR寄存器的预装功能，即影子寄存器
+void TIM_OC2PreloadConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload);    写入的值不会立即生效，而在更新事件的时候生效
+void TIM_OC3PreloadConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload);
+void TIM_OC4PreloadConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload);
+
+void TIM_OC1FastConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCFast);   用来配置快速使能的  
+void TIM_OC2FastConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCFast);
+void TIM_OC3FastConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCFast);
+void TIM_OC4FastConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCFast);
+
+void TIM_ClearOC1Ref(TIM_TypeDef* TIMx, uint16_t TIM_OCClear);    清除REF信号使用
+void TIM_ClearOC2Ref(TIM_TypeDef* TIMx, uint16_t TIM_OCClear);
+void TIM_ClearOC3Ref(TIM_TypeDef* TIMx, uint16_t TIM_OCClear);
+void TIM_ClearOC4Ref(TIM_TypeDef* TIMx, uint16_t TIM_OCClear);
+
+void TIM_OC1PolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPolarity);    单独设置OC引脚的极性的
+void TIM_OC1NPolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCNPolarity);    带N的是高级定时器里的互补通道配置
+void TIM_OC2PolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPolarity);
+void TIM_OC2NPolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCNPolarity);
+void TIM_OC3PolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPolarity);
+void TIM_OC3NPolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCNPolarity);
+void TIM_OC4PolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPolarity);
+
+void TIM_CCxCmd(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint16_t TIM_CCx);      单独修改输出使能参数
+void TIM_CCxNCmd(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint16_t TIM_CCxN);
+
+void TIM_SelectOCxM(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint16_t TIM_OCMode);      选择输出比较模式
+
+#
+void TIM_SetCompare1(TIM_TypeDef* TIMx, uint16_t Compare1);    单独更改CCR寄存器值的函数
+void TIM_SetCompare2(TIM_TypeDef* TIMx, uint16_t Compare2);    运行的 时候更改占空比所需函数
+void TIM_SetCompare3(TIM_TypeDef* TIMx, uint16_t Compare3);
+void TIM_SetCompare4(TIM_TypeDef* TIMx, uint16_t Compare4);
+
+注意
+void TIM_CtrlPWMOutputs(TIM_TypeDef* TIMx, FunctionalState NewState);      仅高级定时器使用输出PWM，否则无法正常输出PWM
+
+
