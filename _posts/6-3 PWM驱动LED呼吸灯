@@ -50,3 +50,12 @@ void TIM_SetCompare4(TIM_TypeDef* TIMx, uint16_t Compare4);
 void TIM_CtrlPWMOutputs(TIM_TypeDef* TIMx, FunctionalState NewState);      仅高级定时器使用输出PWM，否则无法正常输出PWM
 
 
+
+PA15、PB3、PB4这三个引脚如果需要当GPIO口来使用的话
+需加上打开AFIO时钟，再用AFIO解除掉JTAG复用引脚
+
+如果需要重映射其他外设或定时器的复用引脚
+需先打开AFIO时钟，再加上AFIO重映射外设复用的引脚
+
+如果引脚是调试端口，就需要打开AFIO时钟、重映射外设复用引脚，解除调试端口三步
+
